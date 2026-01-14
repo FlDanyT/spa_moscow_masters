@@ -1,10 +1,13 @@
 import logo from './logo.svg'; // src={logo} 
 import './App.css';
-import { useState } from 'react';
+import { use, useState } from 'react';
 
 function App() {
 
   const [categories, setCotegories] = useState([])
+
+  const [name, SetName] = useState("")
+  const [description, SetDescription] = useState("")
 
   function getCategoriesClick() {
     fetch('http://127.0.0.1:8000/categories/')
@@ -16,6 +19,17 @@ function App() {
     })
   }
 
+  function postCategoriesClick() {
+
+    fetch('http://127.0.0.1:8000/categories/', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json', 
+      },
+      body: JSON.stringify({"name": name, "description": description})
+    }) 
+
+  }
 
   return (
     <div className='App'>
@@ -33,18 +47,18 @@ function App() {
       )}
 
       <h1>Добавить категорию</h1>
-      <input placeholder='name'/>
-      <input placeholder='description'/>
-      <button>Добавить</button>
+      <input onChange={(e) => SetName(e.target.value)}/>
+      <input onChange={(e) => SetDescription(e.target.value)}/>
+      <button onClick={postCategoriesClick}>Добавить</button>
 
       <h1>Изменить категорию</h1>
-      <input placeholder='id'/>
-      <input placeholder='name'/>
-      <input placeholder='description'/>
+      <input/>
+      <input/>
+      <input/>
       <button>Изменить</button>
 
       <h1>Удалить категорию</h1>
-      <input placeholder='id'/>
+      <input/>
       <button>Удалить</button>
     </div>
   );

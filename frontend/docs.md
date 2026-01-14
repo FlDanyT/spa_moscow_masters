@@ -11,22 +11,22 @@ npx create-react-app shop
       <button>Посмотреть</button>
 
       <h1>Добавить категорию</h1>
-      <input placeholder='name'/>
-      <input placeholder='description'/>
+      <input/>
+      <input/>
       <button>Добавить</button>
 
       <h1>Изменить категорию</h1>
-      <input placeholder='id'/>
-      <input placeholder='name'/>
-      <input placeholder='description'/>
+      <input/>
+      <input/>
+      <input/>
       <button>Изменить</button>
 
       <h1>Удалить категорию</h1>
-      <input placeholder='id'/>
+      <input/>
       <button>Удалить</button>
     </div>
 ```
-Get запрос к api
+** Get запрос к api. Просмотр категорий. **
 ```javascript
 import { useState } from 'react';
 
@@ -57,3 +57,27 @@ function getCategoriesClick() {
             </div>
         ))
 )}
+```
+** Post запрос к api. Добавление категорий **
+```javascript
+const [name, SetName] = useState("")
+const [description, SetDescription] = useState("")
+
+function postCategoriesClick() {
+
+    fetch('http://127.0.0.1:8000/categories/', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json', 
+      },
+      body: JSON.stringify({"name": name, "description": description})
+    }) 
+
+}
+```
+```html
+<h1>Добавить категорию</h1>
+<input onChange={(e) => SetName(e.target.value)}/>
+<input onChange={(e) => SetDescription(e.target.value)}/>
+<button onClick={postCategoriesClick}>Добавить</button>
+```
