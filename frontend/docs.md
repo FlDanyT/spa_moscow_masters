@@ -106,3 +106,23 @@ function updateCategoriesClick() {
 <input onChange={(e) => SetUpdateDescription(e.target.value)}/>
 <button onClick={updateCategoriesClick}>Изменить</button>
 ```
+** DELETE запрос к api. Удаление категорий **
+```javascript
+const [deleteId, setDeleteId] = useState("")
+
+function deleteCategoriesClick() {
+
+    fetch('http://127.0.0.1:8000/categories/' + deleteId + '/', {
+      method: "DELETE",
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+
+}
+```
+```html
+<h1>Удалить категорию</h1>
+<input onChange={(e) => setDeleteId(e.target.value)}/>
+<button onClick={deleteCategoriesClick}>Удалить</button>
+```

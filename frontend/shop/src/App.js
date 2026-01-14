@@ -13,6 +13,8 @@ function App() {
   const [updateName, SetUpdateName] = useState("")
   const [updateDescription, SetUpdateDescription] = useState("")
 
+  const [deleteId, setDeleteId] = useState("")
+
   function getCategoriesClick() {
     fetch('http://127.0.0.1:8000/categories/')
     .then((response) => {
@@ -46,6 +48,15 @@ function App() {
 
   }
 
+  function deleteCategoriesClick() {
+    fetch('http://127.0.0.1:8000/categories/' + deleteId + '/', {
+      method: "DELETE",
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+  }
+
   return (
     <div className='App'>
       <h1>Посмотреть категории</h1>
@@ -74,8 +85,8 @@ function App() {
       <button onClick={updateCategoriesClick}>Изменить</button>
 
       <h1>Удалить категорию</h1>
-      <input/>
-      <button>Удалить</button>
+      <input onChange={(e) => setDeleteId(e.target.value)}/>
+      <button onClick={deleteCategoriesClick}>Удалить</button>
 
     </div>
   );
