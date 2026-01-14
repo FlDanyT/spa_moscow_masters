@@ -1,95 +1,34 @@
 import logo from './logo.svg'; // src={logo} 
 import './App.css';
-import { use, useState } from 'react';
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import Goods from './pages/Goods';
+import Category from './pages/Category';
 
 function App() {
 
-  const [categories, setCotegories] = useState([])
-
-  const [name, SetName] = useState("")
-  const [description, SetDescription] = useState("")
-
-  const [updateId, SetUpdateId] = useState("")
-  const [updateName, SetUpdateName] = useState("")
-  const [updateDescription, SetUpdateDescription] = useState("")
-
-  const [deleteId, setDeleteId] = useState("")
-
-  function getCategoriesClick() {
-    fetch('http://127.0.0.1:8000/categories/')
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      setCotegories(data)
-    })
-  }
-
-  function postCategoriesClick() {
-
-    fetch('http://127.0.0.1:8000/categories/', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json', 
-      },
-      body: JSON.stringify({"name": name, "description": description})
-    }) 
-
-  }
-
-  function updateCategoriesClick() {
-
-    fetch('http://127.0.0.1:8000/categories/' + updateId + '/', {
-      method: "PUT",
-      headers: {
-        'Content-Type': 'application/json'
-      }, body: JSON.stringify({"name": updateName, "description": updateDescription})
-    })
-
-  }
-
-  function deleteCategoriesClick() {
-    fetch('http://127.0.0.1:8000/categories/' + deleteId + '/', {
-      method: "DELETE",
-      headers: {
-        'Content-type': 'application/json'
-      }
-    })
-  }
-
   return (
-    <div className='App'>
-      <h1>Посмотреть категории</h1>
-      <button  onClick={getCategoriesClick}>Посмотреть</button>
-      { categories.length === 0 ? (
-        <p></p>
-      )  : (
-        categories.map((cat) => (
-          <div key={cat.id}>
-              <h1>{cat.id}</h1>
-              <h1>{cat.name}</h1>
-              <p>{cat.description}</p>
-            </div>
-        ))
-      )}
+    <Router>
+      <div className='App'>
+      <button className='button'>
+        <Link to="/goods">Товары</Link>
+      </button>
 
-      <h1>Добавить категорию</h1>
-      <input onChange={(e) => SetName(e.target.value)}/>
-      <input onChange={(e) => SetDescription(e.target.value)}/>
-      <button onClick={postCategoriesClick}>Добавить</button>
+      <br/>
 
-      <h1>Изменить категорию</h1>
-      <input onChange={(e) => SetUpdateId(e.target.value)}/>
-      <input onChange={(e) => SetUpdateName(e.target.value)}/>
-      <input onChange={(e) => SetUpdateDescription(e.target.value)}/>
-      <button onClick={updateCategoriesClick}>Изменить</button>
+      <button className='button'>
+      <Link to="/category">Категории</Link>
+      </button>
 
-      <h1>Удалить категорию</h1>
-      <input onChange={(e) => setDeleteId(e.target.value)}/>
-      <button onClick={deleteCategoriesClick}>Удалить</button>
+      <Routes>
+        <Route path='/goods' element={<Goods/>}></Route>
+        <Route path='/category' element={<Category/>}></Route>
+      </Routes>
 
     </div>
+    </Router>
   );
+
 }
 
 export default App;

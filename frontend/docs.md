@@ -126,3 +126,56 @@ function deleteCategoriesClick() {
 <input onChange={(e) => setDeleteId(e.target.value)}/>
 <button onClick={deleteCategoriesClick}>Удалить</button>
 ```
+** Переключение страниц без перезагрузки **
+Скачиваем библиотеку
+```bash
+npm install react-router-dom
+```
+Делаем папку pages где будут наши страницы.
+Делаем в папке pages файл Goods.js. И там:
+```javascript
+import '../App.css'
+
+function Goods(){
+    return (
+        <div className='App'>
+            <h1>Товары</h1>
+        </div>
+    )
+}
+
+export default Goods;
+```
+Делаем файл Category.js в папке pages и переносим туда код App.js меняя названия, импорты. 
+В App.js настраиваем роутеры:
+```javascript
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom"
+import Goods from './pages/Goods';
+import Category from './pages/Category';
+
+function App() {
+
+  return (
+    <Router>
+      <div className='App'>
+      <button className='button'>
+        <Link to="/goods">Товары</Link>
+      </button>
+
+      <br/>
+
+      <button className='button'>
+      <Link to="/category">Категории</Link>
+      </button>
+
+      <Routes>
+        <Route path='/goods' element={<Goods/>}></Route>
+        <Route path='/category' element={<Category/>}></Route>
+      </Routes>
+
+    </div>
+    </Router>
+  );
+
+}
+```
