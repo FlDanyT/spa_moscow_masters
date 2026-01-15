@@ -79,3 +79,17 @@ urlpatterns = [
     path('', include('category.urls'))
 ]
 ```
+**Не отображается один из url**
+В главном urls нужно сделать так:
+```python
+    path('categories/', include('category.urls')),
+    path('goods/', include('goods.urls')),
+```
+В categories.urls:
+```python
+router.register(r'', CategoriesViewSet, basename='categories')
+```
+В goods.urls:
+```python
+router.register(r'', GoodsListViewSet, basename='goods')
+```
