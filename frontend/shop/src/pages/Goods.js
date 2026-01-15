@@ -6,12 +6,12 @@ function Goods(){
     const [goods, SetGoods] = useState([])
 
     const [postName,SetPostName] = useState('')
-    const [postDscription,SetPostDscription] = useState('')
+    const [postDescription,SetPostDescription] = useState('')
     const [postPrice,SetPostPrice] = useState('')
 
     const [putId,SetPutId] = useState('')
     const [putName,SetPutName] = useState('')
-    const [putDscription,SetPutDscription] = useState('')
+    const [putDescription,SetPutDescription] = useState('')
     const [putPrice,SetPutPrice] = useState('')
 
     const [deleteId,SetDeleteId] = useState('')
@@ -35,7 +35,7 @@ function Goods(){
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({'name': postName, 'dscription': postDscription, 'price': postPrice})
+            body: JSON.stringify({'name': postName, 'description': postDescription, 'price': postPrice})
         })
 
     }
@@ -47,7 +47,7 @@ function Goods(){
             headers: {
                 "Content-Type": 'application/json'
             },
-            body: JSON.stringify({'name': putName, 'dscription': putDscription, 'price': putPrice})
+            body: JSON.stringify({'name': putName, 'description': putDescription, 'price': putPrice})
         })
 
     }
@@ -75,7 +75,7 @@ function Goods(){
                         <div> 
                         <p>{good.id}</p>
                         <p>{good.name}</p>
-                        <p>{good.dscription}</p>
+                        <p>{good.description}</p>
                         <p>{good.price}</p>
                         </div>
                     ))
@@ -86,8 +86,8 @@ function Goods(){
             <h1>Добавить товары</h1>
             <p>name</p>
             <input onChange={(e) => SetPostName(e.target.value)}></input>
-            <p>dscription</p>
-            <input onChange={(e) => SetPostDscription(e.target.value)}></input>
+            <p>description</p>
+            <input onChange={(e) => SetPostDescription(e.target.value)}></input>
             <p>price</p>
             <input onChange={(e) => SetPostPrice(e.target.value)}></input>
             <button onClick={postGoods}>Добавить</button>
@@ -97,8 +97,8 @@ function Goods(){
             <input onChange={(e) => SetPutId(e.target.value)}></input>
             <p>name</p>
             <input onChange={(e) => SetPutName(e.target.value)}></input>
-            <p>dscription</p>
-            <input onChange={(e) => SetPutDscription(e.target.value)}></input>
+            <p>description</p>
+            <input onChange={(e) => SetPutDescription(e.target.value)}></input>
             <p>price</p>
             <input onChange={(e) => SetPutPrice(e.target.value)}></input>
             <button onClick={putGoods}>Изменить</button>
