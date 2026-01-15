@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'classified_information.apps.ClassifiedInformationConfig',
     'goods.apps.GoodsConfig',
     'corsheaders',
     'rest_framework',
