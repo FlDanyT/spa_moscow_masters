@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 ```
-** Создание приложения Категории **
+**Создание приложения Категории**
 Написание модулей
 ```python
 class Categories(models.Model):
@@ -40,7 +40,6 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 **Создавать категории, редактировать категории, удалять категории, просматривать категории**
-** http://127.0.0.1:8000/categories **
 Создаем файл serializers.py в приложении, для преобразования сложных объектов (например, моделей из базы данных) в стандартизированные форматы (JSON, XML). В нем:
 ```python
 from rest_framework import serializers

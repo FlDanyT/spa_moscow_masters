@@ -3,7 +3,7 @@
 npx create-react-app shop
 ```
 Далее удаляем все не нужное.
-** Работа с категориями **
+**Работа с категориями**
 Делаем верстку
 ```html
     <div className='App'>
@@ -26,7 +26,7 @@ npx create-react-app shop
       <button>Удалить</button>
     </div>
 ```
-** Get запрос к api. Просмотр категорий. **
+**Get запрос к api. Просмотр категорий.**
 ```javascript
 import { useState } from 'react';
 
@@ -59,7 +59,7 @@ function getCategoriesClick() {
         ))
 )}
 ```
-** Post запрос к api. Добавление категорий **
+**Post запрос к api. Добавление категорий**
 ```javascript
 const [name, SetName] = useState("")
 const [description, SetDescription] = useState("")
@@ -82,7 +82,7 @@ function postCategoriesClick() {
 <input onChange={(e) => SetDescription(e.target.value)}/>
 <button onClick={postCategoriesClick}>Добавить</button>
 ```
-** PUT запрос к api. Изменение категорий **
+**PUT запрос к api. Изменение категорий**
 ```javascript
 const [updateId, SetUpdateId] = useState("")
 const [updateName, SetUpdateName] = useState("")
@@ -106,7 +106,7 @@ function updateCategoriesClick() {
 <input onChange={(e) => SetUpdateDescription(e.target.value)}/>
 <button onClick={updateCategoriesClick}>Изменить</button>
 ```
-** DELETE запрос к api. Удаление категорий **
+**DELETE запрос к api. Удаление категорий**
 ```javascript
 const [deleteId, setDeleteId] = useState("")
 
@@ -126,7 +126,7 @@ function deleteCategoriesClick() {
 <input onChange={(e) => setDeleteId(e.target.value)}/>
 <button onClick={deleteCategoriesClick}>Удалить</button>
 ```
-** Переключение страниц без перезагрузки **
+**Переключение страниц без перезагрузки**
 Скачиваем библиотеку
 ```bash
 npm install react-router-dom
