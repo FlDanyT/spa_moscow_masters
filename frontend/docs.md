@@ -179,3 +179,60 @@ function App() {
 
 }
 ```
+**Авторизация по токену**
+Нечего сложного просто запросы:
+```javascript
+    const [registerName, SetRegisterName] = useState('')
+    const [registerPassword, SetRegisterPassword] = useState('')
+
+    const [loginName, SetLoginName] = useState('')
+    const [loginPassword, SetLoginPassword] = useState('')
+    const [token, setToken] = useState('')
+
+    function register() {
+        fetch('http://127.0.0.1:8000/api/register/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'username': registerName, 'password': registerPassword})
+        })
+    }
+
+    function login() {
+        fetch('http://127.0.0.1:8000/api/login/', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'username': loginName, 'password': loginPassword})
+        })
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            setToken(data)
+        })
+    }
+```
+Далее добовляем Authorization в запросы:
+```javascript
+headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + token.token
+        },
+```
+html авторизации:
+```html
+<p>Имя</p>
+<input onChange={(e) => SetRegisterName(e.target.value)}></input>
+<p>Пороль</p>
+<input onChange={(e) => SetRegisterPassword(e.target.value)}></input>
+<button onClick={register}>Зарегистрироваться</button>
+
+<p>Имя</p>
+<input onChange={(e) => SetLoginName(e.target.value)}></input>
+<p>Пороль</p>
+<input onChange={(e) => SetLoginPassword(e.target.value)}></input>
+<button onClick={login}>Войти в аккаунт</button>
+```
