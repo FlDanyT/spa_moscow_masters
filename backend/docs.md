@@ -35,7 +35,7 @@ from .models import Categories
 admin.site.register(Categories)
 ```
 Миграции
-```python
+```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
@@ -93,3 +93,81 @@ router.register(r'', CategoriesViewSet, basename='categories')
 ```python
 router.register(r'', GoodsListViewSet, basename='goods')
 ```
+**Авторизация по токену**
+Установка
+```bash
+pip install  djangorestframework-simplejwt
+```
+Делаем приложение users.
+Делаем импорты и настройки.
+```python
+INSTALLED_APPS = [
+    'rest_framework.authtoken',
+    'users'
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ]
+}
+```
+Views:
+```python
+from django.contrib.auth.models import User
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+class RegisterView(APIView):
+    permission_classes = []
+
+    def post(self, request):
+        username = request.data.get("username")
+        password= request.data.get("password")
+
+        if not username or not password:
+            return Response({"message":  "Invalid fields"}, status=422)
+        
+        User.objects.create_user(username=username, password=password)
+        return Response({"message": "User created"}, status=201)
+```
+urls: 
+```python
+from django.urls import path
+from rest_framework.authtoken.views import obtain_auth_token
+from .views import RegisterView
+
+urlpatterns = [
+    path('register/', RegisterView.as_view()),
+    path('login/', obtain_auth_token)
+]
+```
+И в гланый urls:
+```python
+urlpatterns = [
+    path('api/', include('users.urls'))
+]
+```
+Миграции
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+Сделаем так что бы смотреть и редактировать товары могли все, категории без регистрации могли только смотреть, classified_information оставим доступ только с полной авторизацией на просмотр и редактирование
+goods.views:
+```python
+from rest_framework.permissions import AllowAny
+
+permission_classes = [AllowAny]
+```
+category.views:
+```python
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+permission_classes = [IsAuthenticatedOrReadOnly]
+```
+Все сделано!

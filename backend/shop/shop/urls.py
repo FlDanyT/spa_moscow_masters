@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('categories/', include('category.urls')),
     path('goods/', include('goods.urls')),
-    path('classified_information/', include('classified_information.urls'))
+    path('classified_information/', include('classified_information.urls')),
+    path('api/', include('users.urls'))
 ]
