@@ -1,6 +1,12 @@
+Создание React с Vite
+```bash
+npm create vite@latest
+npm run dev
+```
 Установка и создание проекта и приложения
 ```bash
 npx create-react-app shop
+npm run start
 ```
 Далее удаляем все не нужное.
 **Работа с категориями**

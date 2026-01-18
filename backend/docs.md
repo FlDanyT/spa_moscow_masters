@@ -1,3 +1,8 @@
+Создание и активирование виртуального окружения на Windows.
+```bash
+python -m venv venv
+.\venv\scripts\activate
+```
 Установка
 ```bash
 pip install djangorestframework
