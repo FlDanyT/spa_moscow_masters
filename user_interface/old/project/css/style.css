@@ -1,0 +1,23 @@
+/* Подключаем шрифт */
+@font-face {
+    font-family: 'My_font';
+    src: url('../fonts/Broadsheet_0.ttf');
+}
+
+* {
+    font-family: 'My_font';
+}
+
+img {
+    max-width: 100%;
+}
+
+.header_li {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.index_slide {
+    background-color: beige;
+}
