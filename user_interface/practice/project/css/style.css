@@ -1,0 +1,42 @@
+@font-face {
+    font-family: my_font;
+    src: url('../fonts/Broadsheet_0.ttf');
+}
+
+* {
+    font-family: 'my_font';
+}
+
+img {
+    max-width: 100%;
+}
+
+.header_li {
+    display: inline;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.cards-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.cards {
+    max-width: 250px;
+    background-color: aqua;
+}
+
+.info-wrapper {
+    display: flex;
+}
+
+
+@media (max-width: 768px) {
+    .cards-wrapper {
+        flex-direction: column;
+    }
+    .info-wrapper {
+        flex-direction: column;
+    }
+}
