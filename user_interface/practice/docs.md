@@ -56,6 +56,7 @@ img {
 
         <input type="checkbox" id="checkbox" required>
         <label for="myCheckBox">Чек-бокс</label>
+        <input type="file">
         <button type="submit">Отправить</button>
     </form>
 </div>
