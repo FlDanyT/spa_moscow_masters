@@ -9,3 +9,14 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [AllowAny]
+
+    @action(detail=True, methods=['get'])
+    def buy(self, request, pk=None):
+        product = self.get_object()
+
+        payment_url = "https://pay.example.com/order/123456"
+
+        return Response({
+            "product": product.name,
+            "payment_url": payment_url
+        }, status=status.HTTP_200_OK)

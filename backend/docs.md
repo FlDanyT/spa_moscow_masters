@@ -195,3 +195,21 @@ urlpatterns = [
 image = models.ImageField(upload_to='products/')
 ```
 **Делаем обычное подключение к админке, serializer, views, urls. Вот и все мы можем загружать products с картинками через api!**
+**В приложение products для каждого продукта получаем ссылку на оплату по url /products/{product_id}/buy/**
+**Для этого во view в ProductViewSet надо добавить этот код и все**
+```python
+from rest_framework import status
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
+@action(detail=True, methods=['get'])
+def buy(self, request, pk=None):
+    product = self.get_object()
+
+    payment_url = "https://pay.example.com/order/123456"
+
+    return Response({
+        "product": product.name,
+        "payment_url": payment_url
+    }, status=status.HTTP_200_OK)
+```
