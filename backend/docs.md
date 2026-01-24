@@ -175,4 +175,23 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 permission_classes = [IsAuthenticatedOrReadOnly]
 ```
-Все сделано!
+**Делаем приложение products работа товаров с картинками**
+**Настраиваем MEDIA в settings.py**
+```python
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+```
+**Для открытия картинок в главный urls.py добавляем**
+```python
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+**Модель картинки в models:**
+```python
+image = models.ImageField(upload_to='products/')
+```
+**Делаем обычное подключение к админке, serializer, views, urls. Вот и все мы можем загружать products с картинками через api!**
