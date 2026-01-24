@@ -7,8 +7,8 @@
 
 **Подключаем лого и стили**
 ```html
-    <link rel="icon" href="images/logo.png">
-    <link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="images/logo.png">
+<link rel="stylesheet" href="css/style.css">
 ```
 **Подключаем шрифты**
 ```css
@@ -29,14 +29,14 @@ img {
 ```
 **Делаем шапку**
 ```html
-        <header>
-            <ul>
-                <li class="header_li">Главная</li>
-                <a href="page.html">
-                    <li class="header_li">Карточки</li>
-                </a>
-            </ul>
-        </header>
+<header>
+    <ul>
+        <li class="header_li">Главная</li>
+            <a href="page.html">
+                <li class="header_li">Карточки</li>
+            </a>
+    </ul>
+</header>
 ```
 ```css
 .header_li {
@@ -47,39 +47,39 @@ img {
 ```
 **Все по inputs**
 ```html
-        <div>
-            <p>inputs</p>
-            <input type="number">
-            <input placeholder="Текст в input">
-            <input type="date">
+<div>
+    <p>inputs</p>
+    <input type="number">
+    <input placeholder="Текст в input">
+    <input type="date">
 
-            <input type="checkbox">
-            <label for="myCheckBox">Чек-бокс</label>
-        </div>
+    <input type="checkbox">
+    <label for="myCheckBox">Чек-бокс</label>
+</div>
 ```
 **Кнопка с ссылкой**
 ```html
-        <div>
-            <a href="page.html">
-                <button>Переход на страницу</button>
-            </a>
-        </div>
+<div>
+    <a href="page.html">
+        <button>Переход на страницу</button>
+    </a>
+</div>
 ```
 **Карточки и структурные изменения контента**
 ```html
-    <div class="cards-wrapper">
-                <div class="cards">
-                    <p>Название</p>
-                    <img src="images/hotel1.png">
-                    <p>Цена</p>
-                </div>
-
-                <div class="cards">
-                    <p>Название</p>
-                    <img src="images/hotel1.png">
-                    <p>Цена</p>
-                </div>
+<div class="cards-wrapper">
+    <div class="cards">
+        <p>Название</p>
+        <img src="images/hotel1.png">
+        <p>Цена</p>
     </div>
+
+    <div class="cards">
+        <p>Название</p>
+        <img src="images/hotel1.png">
+        <p>Цена</p>
+    </div>
+</div>
 ```
 ```css
 .cards-wrapper {
@@ -100,15 +100,11 @@ img {
 ```
 **Структурные изменения контента еще пример**
 ```html
-    <div class="info-wrapper">
-        <input>
-        <input>
-        <button>Клик</button>
-    </div>
-
-    .info-wrapper {
-    display: flex;
-}
+<div class="info-wrapper">
+    <input>
+    <input>
+    <button>Клик</button>
+</div>
 ```
 ```css
 @media (max-width: 768px) {
@@ -119,7 +115,7 @@ img {
 ```
 **Форма отправки телефона и gmail с валидацией.**
 ```html
-    <div>
+<div>
 
     <form>
         <input type="email" required placeholder="E-mail">
@@ -136,7 +132,21 @@ img {
         <button type="submit">Отправить</button>
     </form>
 
-    </div>
+</div>
+```
+**Блок по центру страницы**
+```html
+<div class="block">
+    <p>Text</p>
+    <img src="images/hotel1.png">
+</div>
+```
+```css
+.block {
+    width: 50%; 
+    margin-left: auto;
+    margin-right: auto;
+}
 ```
 **Макеты**
 **Заходим в консоль разработчика и выделяем всю страницу после нажимаем по коду левой кнопкой мыши и выбираем "Capture node screenshot"**
