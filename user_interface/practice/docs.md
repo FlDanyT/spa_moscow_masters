@@ -49,12 +49,15 @@ img {
 ```html
 <div>
     <p>inputs</p>
-    <input type="number">
-    <input placeholder="Текст в input">
-    <input type="date">
+    <form>
+        <input type="number" required>
+        <input placeholder="Текст в input" required>
+        <input type="date" required>
 
-    <input type="checkbox">
-    <label for="myCheckBox">Чек-бокс</label>
+        <input type="checkbox" id="checkbox" required>
+        <label for="myCheckBox">Чек-бокс</label>
+        <button type="submit">Отправить</button>
+    </form>
 </div>
 ```
 **Кнопка с ссылкой**
