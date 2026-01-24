@@ -107,6 +107,10 @@ img {
 </div>
 ```
 ```css
+.info-wrapper {
+    display: flex;
+}
+
 @media (max-width: 768px) {
     .info-wrapper {
         flex-direction: column;
