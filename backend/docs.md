@@ -162,6 +162,20 @@ urlpatterns = [
 python manage.py makemigrations
 python manage.py migrate
 ```
+**Вместо Token делаем Bearer**
+В users делаем authentication.py
+```python
+from rest_framework.authentication import TokenAuthentication
+
+class BearerTokenAuthentication(TokenAuthentication):
+    keyword = 'Bearer'
+```
+В настройках
+```python
+'DEFAULT_AUTHENTICATION_CLASSES': [
+    'users.authentication.BearerTokenAuthentication'
+],
+```
 Сделаем так что бы смотреть и редактировать товары могли все, категории без регистрации могли только смотреть, classified_information оставим доступ только с полной авторизацией на просмотр и редактирование
 goods.views:
 ```python
